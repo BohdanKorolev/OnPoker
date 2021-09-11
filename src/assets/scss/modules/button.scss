@@ -1,0 +1,21 @@
+.button-zx {
+  transition: .5s;
+  border-radius: 5px;
+  background-image: linear-gradient( to top, var(--rgb1, rgb(152,109,38)) var(--p1, 1%) , rgb(197,162,65) 100%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25),inset 0px 2px 0px 0px rgba(255, 255, 255, 0.25);
+  &:hover {
+    --rgb1: rgb(179,127,45);
+    --p1: 1%;
+  }
+  &:focus, &:visited {
+    --rgb1: rgb(128,91,32);
+    --p1: 0%;
+  }
+  &.disabled, &[disabled] {
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.302;
+    --rgb1: rgb(152,109,38);
+    --p1: 1%;
+  }
+}

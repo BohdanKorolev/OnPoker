@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://zyxit.pro",
+    "changeOrigin": true,
+    "withCredentials": true
+  }
+}

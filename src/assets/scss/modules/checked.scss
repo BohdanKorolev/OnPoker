@@ -1,0 +1,63 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 20px;
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(70, 70, 70);
+    -webkit-transition: .4s;
+    transition: .4s;
+    box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .5);
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 15px;
+      width: 15px;
+      right: 4px;
+      bottom: 2.5px;
+      background-image: linear-gradient(to top, #8e8c8c 0%, #929191 100%);
+      box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.25),inset 0px 1px 0px 0px rgba(206, 206, 206, 0.004);
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+  }
+  input:checked + .slider {
+    background-image: linear-gradient( 0deg, rgb(197,162,65) 0%, rgb(152,109,38) 99%);
+  }
+
+
+  input:checked + .slider:before {
+    transform: translateX(-23px);
+    background-image: linear-gradient( to top, rgb(157, 157, 157) 0%, rgb(255, 255, 255) 100%);
+  }
+
+  input:disabled + .slider:before,
+  input[disabled] + .slider:before,
+  input.disabled + .slider:before {
+    pointer-events: none;
+    user-select: none;
+    background-image: linear-gradient( to top, rgb(95,95,95) 0%, rgb(123,123,123) 100%);
+  }
+
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+}
+

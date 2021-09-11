@@ -1,0 +1,30 @@
+<div [class]="'modal-body ' + (ref.options.dlgClass ? ref.options.dlgClass: '')" [ngStyle]="componentStyles">
+  <div class="close-modal" (click)="close()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      width="15px" height="15px">
+      <path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
+            d="M14.722,1.674 L8.896,7.499 L14.722,13.325 C15.103,13.706 15.103,14.324 14.722,14.706 L14.705,14.722 C14.323,15.103 13.706,15.103 13.325,14.722 L7.499,8.896 L1.673,14.722 C1.293,15.103 0.675,15.103 0.293,14.722 L0.276,14.706 C-0.105,14.325 -0.105,13.706 0.276,13.325 L6.102,7.499 L0.276,1.674 C-0.105,1.293 -0.105,0.674 0.276,0.293 L0.293,0.277 C0.675,-0.105 1.292,-0.105 1.673,0.277 L7.499,6.102 L13.325,0.277 C13.706,-0.104 14.324,-0.104 14.706,0.277 L14.722,0.293 C15.103,0.674 15.104,1.293 14.722,1.674 Z"/>
+    </svg>
+  </div>
+  <header *ngIf="ref.options.title">{{ref.options.title}}</header>
+  <ng-container [ngSwitch]="contentType">
+
+    <ng-container *ngSwitchCase="'string'">
+      <div class="box">
+        <div [innerHTML]="content"></div>
+      </div>
+<!--      <button type="button" (click)="close()" class="button-zx">OK</button>-->
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'template'">
+      <ng-container *ngTemplateOutlet="content; context: context"></ng-container>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'component'">
+      <ng-container *ngComponentOutlet="content"></ng-container>
+    </ng-container>
+
+  </ng-container>
+</div>

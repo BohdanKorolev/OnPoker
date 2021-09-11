@@ -1,0 +1,95 @@
+<ng-template #sbModalTemplate>
+  <div class="container">
+    <div class="header">
+      <div class="currency">
+        <img [src]="'/assets/image/icons/' + sbContractTitle.toLowerCase() + '.svg'" alt="">
+        <p>{{sbContractTitle}}</p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="input">
+        <input type="text" value="" [formControl]="sbUserAmountControl" (keydown)="numberInputValidator($event)">
+        <small (click)="setMaxAllowValue()">Safe max</small>
+      </div>
+      <small>Available withdraw amount = Total Supply Amount - VAI  Mint Amount - Borrowed Amount</small>
+      <div class="sb">
+        <div class="header">
+          <button [class.active]="sbSwitch === 0"
+                  (click)="sbSwitch = 0"
+          >
+            Supply
+          </button>
+          <button [class.active]="sbSwitch === 1"
+                  (click)="sbSwitch = 1"
+          >
+            Withdraw
+          </button>
+        </div>
+        <div class="supply" *ngIf="sbSwitch === 0">
+          <div class="value">
+            <p>Supply APY</p>
+            <small>{{contractDetails.supplyApy}}%</small>
+          </div>
+          <div class="value">
+            <p>Distribution APY</p>
+            <small>{{contractDetails.distributionApy}}%</small>
+          </div>
+          <div class="value">
+            <p>Available {{sbContractTitle}} Limit</p>
+            <small>{{this.availableLimit | number : '0.0-2'}} {{sbContractTitle}}</small>
+          </div>
+          <div class="delimiter"></div>
+          <div class="value">
+            <p>Borrow Limit</p>
+            <small>${{creditLimitInfo.borrowLimit}}</small>
+          </div>
+          <div class="value">
+            <p>Borrow Limit Used</p>
+            <small>{{creditLimitInfo.borrowLimitUsed}}%</small>
+          </div>
+          <div class="range">
+            <input type="range" min="0" max="100" [value]="creditLimitInfo.borrowLimitUsed" step="1" disabled>
+          </div>
+          <div class="delimiter"></div>
+          <button (click)="supply()">Supply</button>
+          <div class="value">
+            <p>Wallet Balance</p>
+            <small>{{walletBalance | number : '0.0-2'}} {{sbContractTitle}}</small>
+          </div>
+        </div>
+        <div class="withdraw" *ngIf="sbSwitch === 1">
+          <div class="value">
+            <p>Supply APY</p>
+            <small>{{contractDetails.supplyApy}}%</small>
+          </div>
+          <div class="value">
+            <p>Distribution APY</p>
+            <small>{{contractDetails.distributionApy}}%</small>
+          </div>
+          <div class="value">
+            <p>Available {{sbContractTitle}} Limit</p>
+            <small>{{this.availableLimit | number : '0.0-2'}} {{sbContractTitle}}</small>
+          </div>
+          <div class="delimiter"></div>
+          <div class="value">
+            <p>Borrow Limit</p>
+            <small>${{creditLimitInfo.borrowLimit}}</small>
+          </div>
+          <div class="value">
+            <p>Borrow Limit Used</p>
+            <small>{{creditLimitInfo.borrowLimitUsed}}%</small>
+          </div>
+          <div class="range">
+            <input type="range" min="0" max="100" [value]="creditLimitInfo.borrowLimitUsed" step="1" disabled>
+          </div>
+          <div class="delimiter"></div>
+          <button (click)="withdraw()">Withdraw</button>
+          <div class="value">
+            <p>Wallet Balance</p>
+            <small>{{walletBalance | number : '0.0-2'}} {{sbContractTitle}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

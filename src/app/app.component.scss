@@ -1,0 +1,39 @@
+.main {
+  display: flex;
+}
+aside {
+  //background: #4b4a45;
+  width: 280px;
+  min-width: 280px;
+  height: 100vh;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  @media (max-width: 1440px) and (min-width: 1025px){
+    width: 250px;
+    min-width: 250px;
+  }
+  @media (max-width: 1024px){
+    width: 90px;
+    min-width: 90px;
+    @media (max-width: 767px){
+      position: fixed;
+      width: 0;
+      min-width: 0;
+    }
+  }
+}
+
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  //width: calc(100% - 280px);
+  //background-color: #252930;
+  width: 100%;
+}
+
+
+
+

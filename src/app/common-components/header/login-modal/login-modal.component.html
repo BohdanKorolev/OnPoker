@@ -1,0 +1,26 @@
+<ng-template #sbModalTemplate>
+  <div class="container">
+    <div class="header">
+      <div class="currency">
+        <p>Login</p>
+      </div>
+    </div>
+    <form [formGroup]="loginForm" novalidate>
+      <div class="content">
+        <div class="input">
+          <input type="text" value="" formControlName="userLogin" placeholder="User name" required>
+        </div>
+        <div class="input">
+          <input type="password" value="" formControlName="userPassword" placeholder="Password" required>
+        </div>
+        <button (click)="login()" type="button">Login</button>
+        <small *ngIf="_login.errors?.required">
+          Please fill in all fields
+        </small>
+        <small *ngIf="_password.errors?.pattern">
+          Password must contain at least 8 characters
+        </small>
+      </div>
+    </form>
+  </div>
+</ng-template>

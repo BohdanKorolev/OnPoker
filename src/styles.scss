@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'assets/scss/modules/_fonts.scss';
+
+@import "assets/scss/utils/reset.scss";
+@import '~@angular/cdk/overlay-prebuilt.css';
+
+body {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 400;
+  font-size: 16pt;
+  background-image: linear-gradient( -135deg, rgb(19,21,26) 0%, rgb(48,54,62) 100%);
+  color: #fff;
+  min-height: 100vh;
+}
+
+input, button, textarea {
+  font-family: 'Mulish', sans-serif;
+  color: #fff;
+}
+
+.modal-background {
+  background: rgba(0, 0, 1, 0.4);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+.custom-image {
+  img {
+    width: 20px !important;
+  }
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@import 'assets/scss/modules/button.scss';
+@import 'assets/scss/modules/checked.scss';

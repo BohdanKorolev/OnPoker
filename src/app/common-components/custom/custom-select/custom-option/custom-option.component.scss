@@ -1,0 +1,10 @@
+li {
+  display: flex;
+  align-items: center;
+  min-height: 34px;
+  padding-left: 15px;
+  &:hover {
+    background-color: rgb(40, 43, 45);
+  }
+}
+

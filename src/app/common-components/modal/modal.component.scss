@@ -1,0 +1,38 @@
+.modal-body {
+  border-radius: 5px;
+  background-image: -moz-linear-gradient( 0deg, rgb(49,49,42) 0%, rgb(34,34,30) 100%);
+  background-image: -webkit-linear-gradient( 0deg, rgb(49,49,42) 0%, rgb(34,34,30) 100%);
+  background-image: -ms-linear-gradient( 0deg, rgb(49,49,42) 0%, rgb(34,34,30) 100%);
+  box-shadow: 0px 4px 49px 0px rgba(0, 0, 0, 0.35),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.25);
+  background: linear-gradient(to top right, #31312a, #22221e);
+  border-left: 1px solid #c4a241;
+  border-right: 1px solid #976d26;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  position: relative;
+  color: white;
+  padding: 15px;
+  &:before, &:after {
+    content: "";
+    height: 1px;
+    position: absolute;
+    background: linear-gradient(to right, #c4a241 0%,#976d26 100%);
+    left: 1px;
+    right: 1px;
+  }
+  &:before {
+    top: 0;
+  }
+  &:after {
+    bottom: 0;
+  }
+
+  .close-modal {
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    height: 18px;
+    width: 18px;
+  }
+}

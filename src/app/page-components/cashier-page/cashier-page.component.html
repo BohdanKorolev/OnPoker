@@ -1,0 +1,132 @@
+<div class="container">
+  <div class="left">
+    <div class="available">
+      <div class="inner">
+        <div class="credit">
+          <p>Available credit</p>
+          <small>$ {{creditLimit.availableCredit}}</small>
+        </div>
+        <div class="sub">
+          <div class="credit">
+            <p>Borrow limit</p>
+            <small>$ {{creditLimit.borrowLimit}}</small>
+          </div>
+          <div class="range">
+            <input type="range" min="0" max="100" [value]="creditLimit.borrowLimitUsed" step="1" disabled>
+            <p>{{creditLimit.borrowLimitUsed}} %</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="supply-injar">
+      <div class="inner">
+        <div class="values">
+          <label for="supply">
+            <p>Supply</p>
+            <input type="text" id="supply" readonly value="${{creditPortfolio.supply}}">
+          </label>
+          <label for="injar">
+            <p>Injar</p>
+            <input type="text" id="injar" readonly value="${{creditPortfolio.injar}}">
+          </label>
+        </div>
+        <div class="percentage">
+          <small>{{creditPortfolio.netApy}}% Net apy</small>
+          <small>{{creditPortfolio.netJarApy}}% Net apy</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="cw">
+      <div class="header">
+        <p>Chipswap</p>
+      </div>
+      <div class="sub" [formGroup]="Form">
+        <div class="from">
+          <small>From:</small>
+          <div class="sub">
+            <input type="text" value="" formControlName="amountFrom" (keydown)="numberInputValidator($event)">
+            <div class="custom-select">
+              <app-custom-select formControlName="tokenFrom">
+                <app-custom-option *ngFor="let item of fromArray">
+                  <img custom-image src="{{item.img}}" alt="">
+                  <p custom-text>{{item.title}}</p>
+                </app-custom-option>
+              </app-custom-select>
+            </div>
+          </div>
+        </div>
+        <div class="swap">
+          <button>
+            <img src="/assets/image/icons/swap-ico.png" alt="" (click)="switchTokens()">
+          </button>
+        </div>
+        <div class="to">
+          <small>To (estimated):</small>
+          <div class="sub">
+            <input type="text" formControlName="amountTo" readonly>
+            <div class="custom-select">
+              <app-custom-select formControlName="tokenTo">
+                <app-custom-option *ngFor="let item of fromArray">
+                  <img custom-image src="{{item.img}}" alt="">
+                  <p custom-text>{{item.title}}</p>
+                </app-custom-option>
+              </app-custom-select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="connect">
+        <button class="button-zx" (click)="connectWallet()">
+          Connect wallet
+        </button>
+      </div>
+      <div class="value">
+        <p>Minimum received</p>
+        <small>{{this.Form.value.amountTo}} {{this.Form.value.tokenTo}}</small>
+      </div>
+      <div class="value">
+        <p>Price Impact</p>
+        <small>{{this.exchangeResponse.priceImpact}}%</small>
+      </div>
+    </div>
+    <div class="sb">
+      <div class="header">
+        <p>Supply</p>
+      </div>
+      <div class="supply" *ngIf="sbSwitch === 0">
+        <table>
+          <tr>
+            <th><p>Asset</p></th>
+            <th><p>APY</p></th>
+            <th><p>Wallet</p></th>
+            <th><p>Collateral</p></th>
+          </tr>
+          <tr *ngFor="let item of contractsArray" (click)="openSbModal(item.title, $event)">
+            <td>
+              <img [src]="'/assets/image/icons/' + item.title.toLowerCase() + '.svg'" alt="">
+              <p>{{item.title}}</p>
+            </td>
+            <td>
+              <p>{{item.APY}}%</p>
+            </td>
+            <td>
+              <small>${{item.rate | number : '0.0-2'}}</small>
+            </td>
+            <td>
+              <label class="switch">
+                <input type="checkbox" (click)="onCollateral(item, $event)" [checked]="item.isCollateral">
+                <span class="slider round"></span>
+              </label>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<app-sb-modal
+  #sbTemplateRef
+  [creditLimitInfo]="creditLimit"
+></app-sb-modal>

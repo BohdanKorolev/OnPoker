@@ -1,0 +1,94 @@
+<ng-template #rbModalTemplate>
+  <div class="container">
+    <div class="header">
+      <div class="currency">
+        <img src="/assets/image/icons/inp-ico.png" alt="">
+        <p>{{rbContractTitle}}</p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="input">
+        <input type="number" value="" [formControl]="rbUserAmountControl">
+        <small (click)="safeMax()">Safe max</small>
+      </div>
+      <div class="rb">
+        <div class="header">
+          <button [class.active]="rbSwitch === 0"
+                  (click)="rbSwitch = 0"
+          >
+            Borrow
+          </button>
+          <button [class.active]="rbSwitch === 1"
+                  (click)="rbSwitch = 1"
+          >
+            Repay borrow
+          </button>
+        </div>
+        <div class="borrow" *ngIf="rbSwitch === 0">
+          <div class="value">
+            <p>Supply APY</p>
+            <small>{{contractDetails.supplyApy}}%</small>
+          </div>
+          <div class="value">
+            <p>Distribution APY</p>
+            <small>{{contractDetails.distributionApy}}%</small>
+          </div>
+          <div class="value">
+            <p>Available {{rbContractTitle}} Limit</p>
+            <small>{{availableLimit | number : '0.0-2'}} {{rbContractTitle}}</small>
+          </div>
+          <div class="delimiter"></div>
+          <div class="value">
+            <p>Borrow Limit</p>
+            <small>${{creditLimitInfo.borrowLimit}}</small>
+          </div>
+          <div class="value">
+            <p>Borrow Limit Used</p>
+            <small>{{creditLimitInfo.borrowLimitUsed}}%</small>
+          </div>
+          <div class="range">
+            <input type="range" min="0" max="100" [value]="creditLimitInfo.borrowLimitUsed" step="1" disabled>
+          </div>
+          <div class="delimiter"></div>
+          <button (click)="borrow()">Borrow</button>
+          <div class="value">
+            <p>Wallet Balance</p>
+            <small>{{walletBalance | number : '0.0-2'}} {{rbContractTitle}}</small>
+          </div>
+        </div>
+        <div class="repay-borrow" *ngIf="rbSwitch === 1">
+          <div class="value">
+            <p>Supply APY</p>
+            <small>{{contractDetails.supplyApy}}%</small>
+          </div>
+          <div class="value">
+            <p>Distribution APY</p>
+            <small>{{contractDetails.distributionApy}}%</small>
+          </div>
+          <div class="value">
+            <p>Available {{rbContractTitle}} Limit</p>
+            <small>{{availableLimit | number : '0.0-2'}} {{rbContractTitle}}</small>
+          </div>
+          <div class="delimiter"></div>
+          <div class="value">
+            <p>Borrow Limit</p>
+            <small>${{creditLimitInfo.borrowLimit}}</small>
+          </div>
+          <div class="value">
+            <p>Borrow Limit Used</p>
+            <small>{{creditLimitInfo.borrowLimitUsed}}%</small>
+          </div>
+          <div class="range">
+            <input type="range" min="0" max="100" [value]="creditLimitInfo.borrowLimitUsed" step="1" disabled>
+          </div>
+          <div class="delimiter"></div>
+          <button (click)="repayBorrow()">Repay borrow</button>
+          <div class="value">
+            <p>Wallet Balance</p>
+            <small>{{walletBalance | number : '0.0-2'}} {{rbContractTitle}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

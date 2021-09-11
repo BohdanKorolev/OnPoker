@@ -1,0 +1,57 @@
+<header class="header">
+  <div class="container">
+    <div class="info-lft-header">
+      <div class="burger-menu" *ngIf="isMobile" (click)="onAside()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="user-header" *ngIf="loggedIn">
+        <div class="user-avatar-header">
+          <img alt="" [src]="userData.userAvatar" default="/assets/image/avatar/avatar.png">
+        </div>
+        <div class="user-name-header">
+          <div class="user-name">{{userData.login}}</div>
+          <div class="user-status">player</div>
+        </div>
+      </div>
+      <div *ngIf="!loggedIn">
+        <button class="text-uppercase button-zx login-btn cursor-pointer" (click)="loginModal.show()">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19" height="20"><image data-name="Векторный смарт-объект" width="19" height="20" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAUCAYAAABvVQZ0AAABUklEQVQ4jaWUvU4CURSE7xptSEiUgsTGaIIlVFrxBoZQ0dLDa9DSWEppR4ix8wmksPIF/ImdhQm2BI2fOTIbd/dcDMFpTu6Zb2b3FrthlYAmcA3MWGqmc3NFJC5goII5cANcaM61H0SDRQF9BW6Bg6xtZ+1NfRcuwCXgHXgCyg5YMmX5xpUckAHbemrPmXmuJ66d3W8VuEPNe9eQV+of/VX2obnn4nml/uKvsjvNjovn1SnwcQFT4BM4iwG2lz91ZgSuAW8KDIE6sKs51N78mgvHBLSAL+KyfSsSc29VAS4zRY/ARF/ARGfkG1dxJZnrPQu+sms5aMnV5SO+VgSqwAuwALquISLjxFuumi1Ln7RWUSbXTW+SLk61GDt6vcKx8id2GOnQcOR6ZQ3lRwnwYMskSY43KVPhT8d2CMH+Wa/A+aZlIYSdEMK+vRn/KPlVCOEbSY6vujCDuTsAAAAASUVORK5CYII="/></svg>
+          Login to Inpoker
+        </button>
+      </div>
+    </div>
+
+    <div class="info-header">
+      <div class="info-currency">
+        <div class="currency icon-currency">Inp</div>
+        <div class="price-currency">{{userData.inpPriceCurrency | number : '0.0-6'}}</div>
+        <div class="add-currency" (click)="depositModal.show('INP', userData.inpPriceCurrency)">
+          <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.9083 2.52577L9.51042 0.0927835C9.38863 -0.0309278 9.19324 -0.0309278 9.07144 0.0927835C8.94965 0.216495 8.94965 0.414948 9.07144 0.53866L10.939 2.43557H0.312108C0.139561 2.43557 0 2.57732 0 2.75258C0 2.92784 0.139561 3.06959 0.312108 3.06959H10.939L9.07144 4.96134C8.94965 5.08505 8.94965 5.28351 9.07144 5.40722C9.13234 5.46907 9.211 5.5 9.2922 5.5C9.3734 5.5 9.45206 5.46907 9.51296 5.40722L11.9109 2.97165C12.0301 2.85052 12.0301 2.64948 11.9083 2.52577Z" fill="white"/>
+            <path d="M12 9.75129C12 9.57611 11.8604 9.43443 11.6878 9.43443H1.06091L2.92893 7.53841C3.05076 7.41475 3.05076 7.21639 2.92893 7.09274C2.80711 6.96909 2.61168 6.96909 2.48985 7.09274L0.0913706 9.52717C-0.0304569 9.65082 -0.0304569 9.84918 0.0913706 9.97283L2.48985 12.4073C2.55076 12.4691 2.62944 12.5 2.71066 12.5C2.79188 12.5 2.87056 12.4691 2.93147 12.4073C3.0533 12.2836 3.0533 12.0852 2.93147 11.9616L1.06345 10.0656H11.6929C11.8604 10.0656 12 9.92646 12 9.75129Z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <div class="info-currency">
+        <div class="currency icon-green">Chip</div>
+        <div class="price-currency">{{userData.chipPriceCurrency | number : '0.0-6'}}</div>
+        <div class="add-currency" (click)="depositModal.show('CHIP', userData.chipPriceCurrency)">
+          <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.9083 2.52577L9.51042 0.0927835C9.38863 -0.0309278 9.19324 -0.0309278 9.07144 0.0927835C8.94965 0.216495 8.94965 0.414948 9.07144 0.53866L10.939 2.43557H0.312108C0.139561 2.43557 0 2.57732 0 2.75258C0 2.92784 0.139561 3.06959 0.312108 3.06959H10.939L9.07144 4.96134C8.94965 5.08505 8.94965 5.28351 9.07144 5.40722C9.13234 5.46907 9.211 5.5 9.2922 5.5C9.3734 5.5 9.45206 5.46907 9.51296 5.40722L11.9109 2.97165C12.0301 2.85052 12.0301 2.64948 11.9083 2.52577Z" fill="white"/>
+            <path d="M12 9.75129C12 9.57611 11.8604 9.43443 11.6878 9.43443H1.06091L2.92893 7.53841C3.05076 7.41475 3.05076 7.21639 2.92893 7.09274C2.80711 6.96909 2.61168 6.96909 2.48985 7.09274L0.0913706 9.52717C-0.0304569 9.65082 -0.0304569 9.84918 0.0913706 9.97283L2.48985 12.4073C2.55076 12.4691 2.62944 12.5 2.71066 12.5C2.79188 12.5 2.87056 12.4691 2.93147 12.4073C3.0533 12.2836 3.0533 12.0852 2.93147 11.9616L1.06345 10.0656H11.6929C11.8604 10.0656 12 9.92646 12 9.75129Z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<app-deposit-modal
+#depositModal
+(onUpdateGameBalance)="updateGameBalance()"
+>
+</app-deposit-modal>
+<app-login-modal #loginModal (onLogin)="onLogin($event)">
+</app-login-modal>
+

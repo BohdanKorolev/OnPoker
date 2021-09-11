@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="left">
+    <div class="available">
+      <div class="inner">
+        <div class="credit">
+          <p>Available credit</p>
+          <small>$ {{creditLimit.availableCredit}}</small>
+        </div>
+        <div class="sub">
+          <div class="credit">
+            <p>Borrow limit</p>
+            <small>$ {{creditLimit.borrowLimit}}</small>
+          </div>
+          <div class="range">
+            <input type="range" min="0" max="100" [value]="creditLimit.borrowLimitUsed" step="1" disabled>
+            <p>{{creditLimit.borrowLimitUsed}} %</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="supply-injar">
+      <div class="inner">
+        <div class="values">
+          <label for="supply">
+            <p>Supply</p>
+            <input type="text" id="supply" readonly value="${{creditPortfolio.supply}}">
+          </label>
+          <label for="injar">
+            <p>Injar</p>
+            <input type="text" id="injar" readonly value="${{creditPortfolio.injar}}">
+          </label>
+        </div>
+        <div class="percentage">
+          <small>{{creditPortfolio.netApy}}% Net apy</small>
+          <small>{{creditPortfolio.netJarApy}}% Net apy</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="chip">
+      <div class="mint">
+        <div class="input">
+          <input type="text" value="0" [formControl]="mintInput" (keydown)="numberInputValidator($event)">
+          <small (click)="onMintSafeMax()">Safe max</small>
+        </div>
+        <div class="value">
+          <img src="/assets/image/icons/chip.svg" alt="">
+          <p>Available CHIP Limit</p>
+          <small>{{this.availableChipLimit}} Chip</small>
+        </div>
+        <div class="value">
+          <img src="/assets/image/icons/chip.svg" alt="">
+          <p>Mint fee</p>
+          <small>0 Chip (0%)</small>
+        </div>
+        <button class="button-zx" (click)="mint()">Mint chip</button>
+        <div class="value">
+          <p>CHIP Balance</p>
+          <small>{{chipBalance | number : '0.0-6'}} Chip</small>
+        </div>
+      </div>
+      <div class="repay">
+        <div class="input">
+          <input type="text" value="0" [formControl]="mintRepayInput" (keydown)="numberInputValidator($event)">
+          <small (click)="onRepayMax()">Max</small>
+        </div>
+        <div class="value">
+          <img src="/assets/image/icons/chip.svg" alt="">
+          <p>Repay CHIP Balance</p>
+          <small>{{userBorrowedChip}} Chip</small>
+        </div>
+        <button class="button-zx" (click)="repayChip()">Repay chip</button>
+        <div class="value">
+          <p>CHIP Balance</p>
+          <small>{{chipBalance | number : '0.0-6'}} Chip</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<main class="main">
+  <aside class="aside">
+    <app-aside></app-aside>
+  </aside>
+  <div class="content">
+    <app-header *ngIf="metamaskState === 5"></app-header>
+    <router-outlet></router-outlet>
+  </div>
+</main>
+<ngx-spinner></ngx-spinner>
+
+
+
+

@@ -1,0 +1,189 @@
+.container {
+  width: 395px;
+  min-height: 558px;
+
+  @media screen and (max-width: 395px){
+    width: 100%;
+  }
+
+  .header {
+    padding-top: 5px;
+
+    .currency {
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-right: 7px;
+      }
+
+      p {
+        text-transform: uppercase;
+        font-size: 1.25rem;
+        line-height: 1.25rem;
+      }
+    }
+  }
+
+  .content {
+    padding-top: 13px;
+
+    .input {
+      margin-bottom: 15px;
+      position: relative;
+      width: 100%;
+
+      input {
+        width: 100%;
+        background: linear-gradient(to right, #464947, #292c2e);
+        box-shadow: inset 0px 0px 10px rgba(0, 0, 0, .25);
+        font-size: 2.25rem;
+        padding: 15px 75px 15px 5px;
+        text-align: center;
+        color: #ebb009;
+        border-radius: 6px;
+      }
+
+      small {
+        position: absolute;
+        display: block;
+        right: 15px;
+        text-transform: uppercase;
+        padding: 7px 10px;
+        border-radius: 6px;
+        background: linear-gradient(to bottom left, #393c3c, #4f514e);
+        font-size: .75rem;
+        word-wrap: break-word;
+        max-width: 51px;
+        top: calc(50% - 22px);
+        text-align: center;
+      }
+    }
+
+    small {
+      display: block;
+      width: 100%;
+      font-size: .5rem;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .sb {
+      width: 100%;
+      background: linear-gradient(to top, #4f4f4f, #414141);
+      padding: 0px 10px;
+
+      .header {
+        border-radius: 6px;
+        min-height: 50px;
+        border-radius: 6px;
+        box-shadow: inset 0px 2px 1px rgba(255, 255, 255, .25);
+        background: linear-gradient(to top, #5d5d5d 0%, #545454 50%);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 3px;
+        margin: 0px -10px 15px -10px;
+
+        button {
+          font-size: 1.125rem;
+          width: calc(50% - 2px);
+          margin-top: 2px;
+          height: 46px;
+          align-self: flex-start;
+          justify-self: center;
+          border-radius: 6px;
+          text-transform: uppercase;
+          background: none;
+          cursor: pointer;
+          @media(max-width: 1560px) {
+            font-size: 1rem;
+          }
+
+          &:hover {
+            background: linear-gradient(to top, #4f4f4f, #414141);
+          }
+
+          &.active {
+            background: linear-gradient(to top, #4f4f4f, #414141);
+            color: #c39f3f;
+          }
+        }
+      }
+
+      .supply, .withdraw {
+
+        .value {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-bottom: 20px;
+          font-size: .875rem;
+          font-weight: 300;
+
+          small {
+            display: inline-block;
+            width: auto;
+            margin-bottom: 0;
+            font-size: .875rem;
+            text-transform: uppercase;
+          }
+        }
+
+        .delimiter {
+          margin: 0px 5px 20px 5px;
+          border-bottom: 1px solid rgba(255, 255, 255, .1);
+        }
+
+        .range {
+          display: flex;
+          align-items: center;
+
+          input {
+            flex-grow: 1;
+          }
+
+          input[type='range'] {
+            overflow: hidden;
+            width: 100%;
+            -webkit-appearance: none;
+            background: linear-gradient(to right, #c5a241 0%, #986d26 35%);
+            border-radius: 5px;
+          }
+
+          input[type='range']::-webkit-slider-runnable-track {
+            height: 6px;
+            -webkit-appearance: none;
+            color: #13bba4;
+            margin-top: -1px;
+          }
+
+          input[type='range']::-webkit-slider-thumb {
+            margin-top: -2px;
+            width: 0px;
+            -webkit-appearance: none;
+            height: 0px;
+            border-radius: 50px;
+            //cursor: ew-resize;
+            background: #000;
+            box-shadow: 200px 0 0 200px #000;
+          }
+        }
+
+        button {
+          width: 100%;
+          border-radius: 4px;
+          border: 1px solid #000;
+          cursor: pointer;
+          box-shadow: inset 0px 2px 1px rgba(255, 255, 255, .25);
+          background: linear-gradient(to top, #986d26, #c5a241);
+          font-size: .875rem;
+          font-weight: 500;
+          text-transform: uppercase;
+          padding: 8px 37px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}

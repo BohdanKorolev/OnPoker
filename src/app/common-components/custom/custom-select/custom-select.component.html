@@ -1,0 +1,9 @@
+<div class="cs-select" [class.opened]="opened" [ngStyle]="styles">
+  <div class="head" (click)="onHeaderClick()">
+    <img *ngIf="image" src="{{image}}" alt="">
+    <p>{{text}}</p>
+  </div>
+  <ul>
+    <ng-content ></ng-content>
+  </ul>
+</div>

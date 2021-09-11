@@ -1,0 +1,38 @@
+<aside [class.open]="isOpenAside">
+  <div class="logo">
+    <div class="close-menu" *ngIf="isMobile" (click)="onAside()"></div>
+    <a [routerLink]="['/']">
+      <img src="/assets/image/icons/logo.svg" alt="" *ngIf="isOpenAside || isDesktop || isMobile ">
+      <img src="/assets/image/icons/logo-min.svg" alt="" *ngIf="!isOpenAside && !isDesktop && !isMobile">
+    </a>
+  </div>
+  <nav class="nav">
+    <ul>
+      <li>
+        <a (click)="redirectToGame()" class="icon icon-play">Play</a>
+      </li>
+      <li>
+        <a [routerLink]="['/cashier']" routerLinkActive="active" (click)="onMenuClose()" class="icon icon-cashier">Cashier</a>
+      </li>
+      <li>
+        <a [routerLink]="['/mint-repay']" routerLinkActive="active" (click)="onMenuClose()" class="icon icon-mint">Mint/Repay</a>
+      </li>
+      <li>
+        <a [routerLink]="['/chip-jar']" routerLinkActive="active" (click)="onMenuClose()" class="icon icon-chip">Chip jar</a>
+      </li>
+      <li>
+        <a [routerLink]="['/inp-market']" routerLinkActive="active" (click)="onMenuClose()" class="icon icon-inp">Inp market</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="aside-open" *ngIf="isTable" (click)="onAside()">
+    <span class="icon-directions"></span>
+    <p>Minimize</p>
+  </div>
+  <div class="footer-aside">
+    <a href="">Terms & Conditions</a>
+    <a href="">Support</a>
+  </div>
+</aside>
+
+

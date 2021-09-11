@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="left">
+    <div class="available">
+      <div class="inner">
+        <div class="credit">
+          <p>Available credit</p>
+          <small>$ {{creditLimit.availableCredit}}</small>
+        </div>
+       <div class="sub">
+         <div class="credit">
+           <p>Borrow limit</p>
+           <small>$ {{creditLimit.borrowLimit}}</small>
+         </div>
+         <div class="range">
+           <input type="range" min="0" max="100" [value]="creditLimit.borrowLimitUsed" step="1" disabled>
+           <p>{{creditLimit.borrowLimitUsed}} %</p>
+         </div>
+       </div>
+      </div>
+    </div>
+    <div class="supply-injar">
+      <div class="inner">
+        <div class="values">
+          <label for="supply">
+            <p>Supply</p>
+            <input type="text" id="supply" readonly value="${{creditPortfolio.supply}}">
+          </label>
+          <label for="injar">
+            <p>Injar</p>
+            <input type="text" id="injar" readonly value="${{creditPortfolio.injar}}">
+          </label>
+        </div>
+        <div class="percentage">
+          <small>{{creditPortfolio.netApy}}% Net apy</small>
+          <small>{{creditPortfolio.netJarApy}}% Net apy</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="horizontal-info">
+      <div class="block">
+        <small>Total emission per day</small>
+        <p>{{panel.totalEmission}} Inp</p>
+      </div>
+      <div class="block">
+        <small>Total CHIP staked</small>
+        <p>{{panel.totalChipStaked}} Chip</p>
+      </div>
+      <div class="block">
+        <small>CHIP staking APY</small>
+        <p>{{panel.chipStakingApy}}%</p>
+      </div>
+      <div class="block">
+        <small>CHIP jar Reward Pool</small>
+        <p>{{panel.chipJarRewardPool}} Inp</p>
+      </div>
+    </div>
+    <div class="chip">
+      <div class="list">
+        <div class="item">
+          <small>Available CHIP to stake</small>
+          <div class="sub">
+            <img src="/assets/image/icons/chip.svg" alt="">
+            <p>{{chipBalance | number : '0.0-6'}} Chip</p>
+          </div>
+        </div><div class="item">
+          <small>CHIP staked</small>
+          <div class="sub">
+            <img src="/assets/image/icons/chip.svg" alt="">
+            <p>{{chipStaked | number : '0.0-6'}} Chip</p>
+          </div>
+        </div><div class="item">
+          <small>Available INP rewards</small>
+          <div class="sub">
+            <img src="/assets/image/icons/inp.svg" alt="">
+            <p>{{inpReward | number : '0.0-6'}} Inp</p>
+            <button class="button-zx" (click)="collectReward()">Claim</button>
+          </div>
+        </div><div class="item">
+          <small>INP Balance</small>
+          <div class="sub">
+            <img src="/assets/image/icons/inp.svg" alt="">
+            <p>{{inpBalance | number : '0.0-6'}} Inp</p>
+          </div>
+        </div>
+      </div>
+      <div class="calc">
+        <div class="stake">
+          <p>Available CHIP to stake: {{chipBalance | number : '0.0-6'}} CHIP</p>
+          <div class="input">
+            <input type="text" value="0" [formControl]="stakeInput" (keydown)="numberInputValidator($event)">
+            <small (click)="onStakeMax()">Max</small>
+          </div>
+          <button class="button-zx" (click)="stakeChip()">Stake</button>
+        </div>
+        <div class="withdraw">
+          <p>CHIP staked: {{chipStaked | number : '0.0-6'}} CHIP</p>
+          <div class="input">
+            <input type="text" value="0" [formControl]="withdrawInput" (keydown)="numberInputValidator($event)">
+            <small (click)="onWithdrawMax()">Max</small>
+          </div>
+          <button class="button-zx" (click)="withdrawStakedChip()">Withdraw</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

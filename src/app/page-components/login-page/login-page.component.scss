@@ -1,0 +1,19 @@
+.login-btn {
+    padding: 28px 15px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+
+    svg {
+        margin-right: 8px;
+    }
+}
+
+.login-text {
+    font-size: 16px;
+    margin: 62px 0 0 32px;
+
+    span {
+        color: #ecb007
+    }
+}

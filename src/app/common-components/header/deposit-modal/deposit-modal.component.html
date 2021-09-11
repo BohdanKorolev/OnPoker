@@ -1,0 +1,79 @@
+<ng-template #sbModalTemplate>
+  <div class="container">
+    <div class="header">
+      <div class="currency">
+        <img [src]="contractIcon" alt="">
+        <p>{{depositContractTitle}}</p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="input">
+        <input type="text" value="" [formControl]="depositUserAmountControl" (keydown)="numberInputValidator($event)">
+        <small (click)="setMaxAllowValue()">Safe max</small>
+      </div>
+      <small>Available withdraw amount = Total Supply Amount - VAI  Mint Amount - Borrowed Amount</small>
+      <div class="sb">
+        <div class="header">
+          <button [class.active]="depositSwitch === 0"
+                  (click)="depositSwitch = 0"
+          >
+            Deposit
+          </button>
+          <button [class.active]="depositSwitch === 1"
+                  (click)="depositSwitch = 1"
+          >
+            Withdraw
+          </button>
+        </div>
+        <div class="supply" *ngIf="depositSwitch === 0">
+          <p>In-Game Balance</p>
+          <div class="value">
+            <p>
+              <img [src]="contractIcon" alt="">
+              {{depositContractTitle}}
+            </p>
+            <p>
+              {{gameBalance | number : '0.0-6'}}
+            </p>
+          </div>
+          <p>Wallet Balance</p>
+          <div class="value">
+            <p>
+              <img [src]="contractIcon" alt="">
+              {{depositContractTitle}}
+            </p>
+            <p>
+              {{walletBalance | number : '0.0-6'}}
+            </p>
+          </div>
+          <div class="delimiter"></div>
+          <button (click)="deposit()">Deposit</button>
+        </div>
+        <div class="withdraw" *ngIf="depositSwitch === 1">
+          <p>In-Game Balance</p>
+          <div class="value">
+            <p>
+              <img [src]="contractIcon" alt="">
+              {{depositContractTitle}}
+            </p>
+            <p>
+              {{gameBalance | number : '0.0-6'}}
+            </p>
+          </div>
+          <p>Wallet Balance</p>
+          <div class="value">
+            <p>
+              <img [src]="contractIcon" alt="">
+              {{depositContractTitle}}
+            </p>
+            <p>
+              {{walletBalance | number : '0.0-6'}}
+            </p>
+          </div>
+          <div class="delimiter"></div>
+          <button (click)="withdraw()">Withdraw</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

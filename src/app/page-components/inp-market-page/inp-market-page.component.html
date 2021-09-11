@@ -1,0 +1,114 @@
+<div>
+  <div class="container">
+    <div class="left">
+      <div class="market-distribution">
+        <h6>Market distribution</h6>
+        <div class="list-item">
+          <div class="currency">
+            <img src="/assets/image/icons/inp.svg" alt="">
+            <p>Inp</p>
+          </div>
+          <div class="percent">
+            <p>{{marketInfo.totalInpReward | number : '0.0-6'}}</p>
+          </div>
+          <div class="price">
+            <p>${{marketInfo.totalInp}}</p>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="currency">
+            <img src="/assets/image/icons/bnb.svg" alt="">
+            <p>Bnb</p>
+          </div>
+          <div class="percent">
+            <p>{{marketInfo.totalBnbReward | number : '0.0-6'}}</p>
+          </div>
+          <div class="price">
+            <p>${{marketInfo.totalBnb}}</p>
+          </div>
+        </div>
+        <div class="list-item">
+          <div class="currency">
+            <img src="/assets/image/icons/busd.svg" alt="">
+            <p>Busd</p>
+          </div>
+          <div class="percent">
+            <p>{{marketInfo.totalBusdReward | number : '0.0-6'}}</p>
+          </div>
+          <div class="price">
+            <p>${{marketInfo.totalBusd}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="all-markets">
+        <h6>All markets</h6>
+        <div class="item">
+          <div class="block">
+            <small>Total supply</small>
+            <p>$ {{marketInfo.totalSupply | number : '0.0-2'}}</p>
+          </div>
+          <div class="block">
+            <small>Total minted CHIP</small>
+            <p>$ {{marketInfo.totalMinted | number : '0.0-2'}}</p>
+          </div>
+          <div class="block">
+            <small>Available liquidity</small>
+            <p>$ {{marketInfo.totalLiquidity | number : '0.0-2'}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="liquidation container">
+    <h6>
+      Liquidation
+    </h6>
+    <div class="liquidation-table-container">
+      <table class="liquidation-table">
+        <thead>
+        <tr>
+          <th>
+            Currency
+          </th>
+          <th>
+            Debt amount (USD)
+          </th>
+          <th>
+            Debt amount (Tokens)
+          </th>
+          <th>
+            Rewards amount
+          </th>
+          <th>
+
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let liquidation of liquidationsList">
+          <td>
+            <img [src]="'/assets/image/icons/' + liquidation.currency.toLowerCase() + '.svg'" alt="" class="liquidation-img">
+            {{liquidation.currency}}
+          </td>
+          <td>
+            $ {{liquidation.debtAmountUsd}}
+          </td>
+          <td>
+            {{liquidation.inAmountToken}}
+          </td>
+          <td>
+            $ {{liquidation.rewardsAmountUsd}}
+          </td>
+          <td>
+            <button (click)="liquidate(liquidation)">
+              LIQUIDATE
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
